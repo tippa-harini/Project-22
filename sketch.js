@@ -5,6 +5,8 @@ const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
 
+var box1,box2,box3;
+
 function preload()
 {
 	helicopterIMG=loadImage("helicopter.png")
@@ -37,7 +39,13 @@ function setup() {
 
 	//Create a Ground
 	ground = Bodies.rectangle(width/2, 650, width, 10 , {isStatic:true} );
- 	World.add(world, ground);
+	 World.add(world, ground);
+	 
+	box1=new Box(400,650,200,20);
+
+	box2=new Box(292,619,20,100);
+
+	box3=new Box(492,619,20,100);
 
 
 	Engine.run(engine);
@@ -48,6 +56,11 @@ function setup() {
 function draw() {
   rectMode(CENTER);
   background(0);
+
+  box1.display();
+  box2.display();
+  box3.display();
+  
   packageSprite.x= packageBody.position.x 
   packageSprite.y= packageBody.position.y 
   drawSprites();
@@ -56,7 +69,7 @@ function draw() {
 }
 
 function keyPressed() {
- if (keyDown === "DOWN_ARROW") {
+ if (keyCode === "DOWN_ARROW") {
    Matter.Body.setStatic(packageBody,false);
     
   }
